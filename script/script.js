@@ -6,18 +6,76 @@ document.addEventListener('DOMContentLoaded', function() {
     const questionTitle = document.querySelector('#question');
     const formAnswers = document.querySelector('#formAnswers');
 
-    const questions = {
-        question: 'Какого цвета бургер вы хотите?',
-        answers: [{
-                title: "Стандарт",
-                url: './image/burger.png'
-            },
-            {
-                title: "Черный",
-                url: './image/burgerBlack.png'
-            }
-        ]
-    }
+    const questions = [{
+            question: 'Какого цвета бургер вы хотите?',
+            answers: [{
+                    title: "Стандарт",
+                    url: './image/burger.png'
+                },
+                {
+                    title: "Черный",
+                    url: './image/burgerBlack.png'
+                }
+            ]
+        },
+        {
+            question: "Из какого мяса котлета?",
+            answers: [{
+                    title: 'Курица',
+                    url: './image/chickenMeat.png'
+                },
+                {
+                    title: 'Говядина',
+                    url: './image/beefMeat.png'
+                },
+                {
+                    title: 'Свинина',
+                    url: './image/porkMeat.png'
+                }
+            ],
+            type: 'radio'
+        },
+        {
+            question: "Дополнительные ингредиенты?",
+            answers: [{
+                    title: 'Помидор',
+                    url: './image/tomato.png'
+                },
+                {
+                    title: 'Огурец',
+                    url: './image/cucumber.png'
+                },
+                {
+                    title: 'Салат',
+                    url: './image/salad.png'
+                },
+                {
+                    title: 'Лук',
+                    url: './image/onion.png'
+                }
+            ],
+            type: 'checkbox'
+        },
+        {
+            question: "Добавить соус?",
+            answers: [{
+                    title: 'Чесночный',
+                    url: './image/sauce1.png'
+                },
+                {
+                    title: 'Томатный',
+                    url: './image/sauce2.png'
+                },
+                {
+                    title: 'Горчичный',
+                    url: './image/sauce3.png'
+                }
+            ],
+            type: 'radio'
+        }
+    ];
+
+
 
     btnOpenModal.addEventListener('click', () => {
         modalBlock.classList.add('d-block');
