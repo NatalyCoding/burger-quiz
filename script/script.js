@@ -95,9 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     const playTest = () => {
+        let numberQuestion = 0;
 
-        const renderAnswers = () => {
-            questions.answers.forEach((answer) => {
+        const renderAnswers = (index) => {
+            questions[index].answers.forEach((answer) => {
                 const answerItem = document.createElement('div');
                 answerItem.classList.add('answers-item', 'd-flex', 'flex-column');
                 answerItem.innerHTML = `
@@ -111,10 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         }
 
-        const renderQuestions = () => {
-            questionTitle.textContent = `${questions.question}`;
-            renderAnswers();
+        const renderQuestions = (indexQuestion) => {
+            questionTitle.textContent = `${questions[indexQuestion].question}`;
+            renderAnswers(indexQuestion);
         }
-        renderQuestions();
+        renderQuestions(numberQuestion);
     }
 })
