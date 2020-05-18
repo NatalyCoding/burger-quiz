@@ -39,18 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const playTest = () => {
 
         const renderAnswers = () => {
-            for (i = 0; i < 2; i++) {
+            questions.answers.forEach((answer) => {
                 const answerItem = document.createElement('div');
                 answerItem.classList.add('answers-item', 'd-flex', 'flex-column');
                 answerItem.innerHTML = `
-              <input type="radio" id="answerItem1" name="answer" class="d-none">
-              <label for="answerItem1" class="d-flex flex-column justify-content-between">
-                  <img class="answerImg" src="${questions.answers[i].url}" alt="burger">
-                  <span>${questions.answers[i].title}</span>
-              </label>
-        `;
+                  <input type="radio" id="answerItem1" name="answer" class="d-none">
+                  <label for="answerItem1" class="d-flex flex-column justify-content-between">
+                      <img class="answerImg" src="${answer.url}" alt="burger">
+                      <span>${answer.title}</span>
+                  </label>
+                `;
                 formAnswers.appendChild(answerItem);
-            }
+            })
         }
 
         const renderQuestions = () => {
