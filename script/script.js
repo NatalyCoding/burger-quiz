@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const btnOpenModal = document.querySelector('#btnOpenModal');
     const modalBlock = document.querySelector('#modalBlock');
+    const modalWrap = document.querySelector('.modal');
     const closeModal = document.querySelector('#closeModal');
     const questionTitle = document.querySelector('#question');
     const formAnswers = document.querySelector('#formAnswers');
@@ -15,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeModal.addEventListener('click', () => {
         modalBlock.classList.remove('d-block');
+    })
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.modal-dialog') &&
+            !event.target.closest('.openModalButton')
+        ) {
+            modalBlock.classList.remove('d-block');
+        }
     })
 
     const playTest = () => {
