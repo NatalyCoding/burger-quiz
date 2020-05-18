@@ -2,12 +2,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const btnOpenModal = document.querySelector('#btnOpenModal');
     const modalBlock = document.querySelector('#modalBlock');
-    const modalWrap = document.querySelector('.modal');
     const closeModal = document.querySelector('#closeModal');
     const questionTitle = document.querySelector('#question');
     const formAnswers = document.querySelector('#formAnswers');
-    const answersTitle = 'Стандарт';
-    const answersUrl = './image/burger.png';
+
+    const questions = {
+        question: 'Какого цвета бургер вы хотите?',
+        answers: [{
+                title: "Стандарт",
+                url: './image/burger.png'
+            },
+            {
+                title: "Черный",
+                url: './image/burgerBlack.png'
+            }
+        ]
+    }
 
     btnOpenModal.addEventListener('click', () => {
         modalBlock.classList.add('d-block');
@@ -29,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const playTest = () => {
 
         const renderQuestions = () => {
-            questionTitle.textContent = 'Какого цвета бургер вы хотите?';
+            questionTitle.textContent = `${questions.question}`;
             formAnswers.innerHTML = `
               <div class="answers-item d-flex flex-column">
                 <input type="radio" id="answerItem1" name="answer" class="d-none">
                 <label for="answerItem1" class="d-flex flex-column justify-content-between">
-                  <img class="answerImg" src="${answersUrl}" alt="burger">
-                  <span>${answersTitle}</span>
+                  <img class="answerImg" src="${questions.answers[0].url}" alt="burger">
+                  <span>${questions.answers[0].title}</span>
                 </label>
               </div>
             `;
