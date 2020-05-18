@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.querySelector('#closeModal');
     const questionTitle = document.querySelector('#question');
     const formAnswers = document.querySelector('#formAnswers');
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
 
     const questions = [{
             question: 'Какого цвета бургер вы хотите?',
@@ -102,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const answerItem = document.createElement('div');
                 answerItem.classList.add('answers-item', 'd-flex', 'flex-column');
                 answerItem.innerHTML = `
-                  <input type="radio" id="answerItem1" name="answer" class="d-none">
-                  <label for="answerItem1" class="d-flex flex-column justify-content-between">
+                  <input type="${questions[index].type}" id="${answer.title}" name="answer" class="d-none">
+                  <label for="${answer.title}" class="d-flex flex-column justify-content-between">
                       <img class="answerImg" src="${answer.url}" alt="burger">
                       <span>${answer.title}</span>
                   </label>
@@ -113,9 +115,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const renderQuestions = (indexQuestion) => {
+            formAnswers.innerHTML = '';
             questionTitle.textContent = `${questions[indexQuestion].question}`;
             renderAnswers(indexQuestion);
+
+            if (numberQuestion === 0) {
+                prevButton.style.display = 'none';
+            } else if (numberQuestion > 0) {
+                prevButton.style.display = 'block';
+            };
+
+            if (numberQuestion === questions.length - 1) {
+                nextButton.style.display = 'none';
+            } else {
+                nextButton.style.display = 'block';
+            };
         }
         renderQuestions(numberQuestion);
+
+        nextButton.onclick = () => {
+            numberQuestion++;
+            renderQuestions(numberQuestion);
+        }
+        prevButton.onclick = () => {
+            numberQuestion--;
+            renderQuestions(numberQuestion);
+        }
     }
 })
